@@ -40,7 +40,7 @@ namespace BankingProject
             try {
             acct1.Deposit(6000);
             sav2.Deposit(5000);
-            sav2.Withdraw(2000);
+            sav2.Withdraw(6000);
             sav2.CalculateAndPayInterest(1);
             acct1.Transfer(2500, acct2);
             }
@@ -50,13 +50,15 @@ namespace BankingProject
             } catch(InsufficientFundsException ex)
             {
                 Console.WriteLine("You don't have enough in your account, whoops.");
+                Console.WriteLine($"You have ${ex.CurrentBalance} in your account");
+                Console.WriteLine($"You are attempting to withdraw ${ex.AmountToWithdraw}");
             }catch(Exception ex)
             {
                 Console.WriteLine("You broke it, congrats.");
             }
-            sav2.Print();
-            acct1.Print();
-            acct2.Print();
+            //sav2.Print();
+            //acct1.Print();
+            //acct2.Print();
         }
     }
 }

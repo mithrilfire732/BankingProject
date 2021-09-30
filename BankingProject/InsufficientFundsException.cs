@@ -8,13 +8,21 @@ namespace BankingProject
 {
     class InsufficientFundsException : Exception
     {
-        public InsufficientFundsException() 
-            : base() { }
+        public decimal CurrentBalance { get; set; }
+        public decimal AmountToWithdraw { get; set; }
+
+        public InsufficientFundsException(decimal CurrentBalance, decimal AmountToWithdraw) 
+            : base() 
+        {
+            this.CurrentBalance = CurrentBalance;
+            this.AmountToWithdraw = AmountToWithdraw;
+        }
 
         public InsufficientFundsException (string Message)
             : base(Message) { }
         
         public InsufficientFundsException (string Message, Exception InnerException)
             : base(Message, InnerException) { }
+        public InsufficientFundsException () : base() { }
     }
 }

@@ -26,7 +26,7 @@ namespace BankingProject
         {
             if(Amount > this.Balance)
             {
-                throw new InsufficientFundsException();
+                throw new InsufficientFundsException(this.Balance,Amount);
             }
             if(Amount <= 0)
             {
