@@ -16,8 +16,7 @@ namespace BankingProject
         {
             if (Amount < 0)
             {
-                Console.WriteLine("Deposit amount must be positive");
-                return false;
+                throw new AmountGreaterThanZeroException();
             }
                 this.Balance += Amount;
             return true;
@@ -27,13 +26,11 @@ namespace BankingProject
         {
             if(Amount > this.Balance)
             {
-                Console.WriteLine("Insufficient Funds");
-                return false;
+                throw new InsufficientFundsException();
             }
-            if(Amount < 0)
+            if(Amount <= 0)
             {
-                Console.WriteLine("Withdrawal amount must be positive");
-                return false;
+                throw new AmountGreaterThanZeroException();
             }
             this.Balance += -Amount;
             return true;
